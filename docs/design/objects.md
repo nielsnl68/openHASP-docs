@@ -187,12 +187,7 @@
 | line_count     | uint16     | 31      | number of minor ticks of the entire scale
 | angle          | 0-360      | 240     | angle between start and end of the scale
 | rotation       | 0-360      | 0       | offset for the gauge's angles to rotate it
-| format         | uint16     | 0       | divider for major tick values
-| | | | `0` : print the major tick value as is
-| | | | `1` : strip 1 zero, i.e. divide tick value by 10 before printing the major tick label
-| | | | `2` : strip 2 zeros, i.e. divide tick value by 100 before printing the major tick label
-| | | | `3` : strip 3 zeros, i.e. divide tick value by 1000 before printing the major tick label
-| | | | `4` : strip 4 zeros, i.e. divide tick value by 10000 before printing the major tick label
+| format         | uint16     | 0       | divider for major tick values<br>  `0` : print the major tick value as is<br>  `1` : strip 1 zero, i.e. divide tick value by 10 before printing the major tick label<br>  `2` : strip 2 zeros, i.e. divide tick value by 100 before printing the major tick label<br>  `3` : strip 3 zeros, i.e. divide tick value by 1000 before printing the major tick label<br>  4` : strip 4 zeros, i.e. divide tick value by 10000 before printing the major tick label
 
 ## Tabview  :material-new-box:{ .tag-medium }  
 | Property | Value        | Default | Description
