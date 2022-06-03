@@ -6,49 +6,54 @@ Some objects allow for more complex styling, effectively changing the appearance
 
 ## Propery naming convention 
 
+> Every styling propery is defined as follows: \<***PropertyName***\>\[\<***PartID***\>\[\<***StateID***\>\]\]   *Read about it below*.
 
-The styling properties below support an optional two-digit suffix to indicate which **part** and/or **state** of the object the property applies to.
-A styling property without suffix will be applied to the **default state** of the **main part** of the object *(i.e. the background)*.
+The styling properties has an optional suffix of maximal two digit's to indicate the **PartID** and **StateID** of the object the property applies to.
+When there is no special **StateID** then it can ommited. A styling property without suffix will be applied to the **default state** of the **main part** of the object *(i.e. the background)*.
 
-Very detailed styling can be applied to each part depending on the state of the object:
+With this convention a very detailed styling can be applied to each part of the object depending on the state.
 
-### Parts
+!!! example  
+    For example the _gauge_ object uses `line_width` to set the minor ticks thickness and needle, `line_width60` for major ticks and `line_width10` for the thickness of the needle.
+
+### The PartIDs
 
 All objects have at least a main part.
 Several objects are made up of additional parts which can each be styled separately.
-To access the properties of the parts use a two-digit suffix appended to the styling properties below.
+To access the properties of the parts use a first digit suffix appended to the styling properties below.
 
 The part indexes are:
 
-- 00 = main part of the object *(i.e. the background)*
-- 10 = the indicator or needle, highlighting the the current value
-- 20 = the knob which can be used the change the value
-- 30 = the background of the items/buttons
-- 40 = the items/buttons
-- 50 = the selected item
-- 60 = major ticks of the gauge object
-- 70 = the text cursor
-- 80 = the scrollbar
-- 90 = other special part, not listed above
+- 0 = main part of the object *(i.e. the background**0**)*
+- 1 = the indicator or needle, highlighting the the current value
+- 2 = the knob which can be used the change the value
+- 3 = the background of the items/buttons
+- 4 = the items/buttons
+- 5 = the selected item
+- 6 = major ticks of the gauge object
+- 7 = the text cursor
+- 8 = the scrollbar
+- 9 = other special part, not listed above
 
-!!! tip  
-    For example the _gauge_ object uses `line_width` to set the minor ticks thickness, `line_width60` for major ticks and `line_width10` for the thickness of the needle.
+When no special state is set you can also ommit the **main part** digit. 
     
 
-### States
+### The State IDs
 
 The state indexes:
 
-- 00 = default styling
-- 01 = styling for toggled state
-- 02 = styling for pressed, not toggled state
-- 03 = styling for pressed and toggled state
-- 04 = styling for disabled not toggled state
-- 05 = styling for disabled and toggled state
+- 0 = default styling *(can be omitted)*
+- 1 = styling for toggled state
+- 2 = styling for pressed, not toggled state
+- 3 = styling for pressed and toggled state
+- 4 = styling for disabled not toggled state
+- 5 = styling for disabled and toggled state
 
-For example to set the `radius` of all the buttons in _btnmatrix_ you'd set a value for the property `radius30`. Using `radius` without a suffix will apply the property to the outline background of it.
+!!! Example  
+    For example to set the `radius` of all the buttons in _btnmatrix_ you'd set a value for the property `radius30`. Using `radius` without a suffix will apply the property to the outline background of it.
 
-A `toggle` `btn` can be made to show `text` `yellow` when toggled ON with `"text_color":"white","text_color01":"yellow"`
+!!! Example  
+    A `toggle` `btn` can be made to show `text` `yellow` when toggled ON with `"text_color":"white","text_color01":"yellow"`
     
 
 ### Inheritance
