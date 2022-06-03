@@ -4,7 +4,8 @@
 You can adjust the appearance of objects by changing the foreground, background and/or border color of each object.
 Some objects allow for more complex styling, effectively changing the appearance of their sub-components.     
 
-## Suffixes
+## Propery naming convention 
+
 
 The styling properties below support an optional two-digit suffix to indicate which **part** and/or **state** of the object the property applies to.
 A styling property without suffix will be applied to the **default state** of the **main part** of the object *(i.e. the background)*.
