@@ -4,19 +4,19 @@
 You can adjust the appearance of objects by changing the foreground, background and/or border color of each object.
 Some objects allow for more complex styling, effectively changing the appearance of their sub-components.     
 
-## Propery naming convention 
+## Property naming convention 
 
-> Every styling propery is defined as follows: \<***PropertyName***\>\[\<***PartID***\>\[\<***StateID***\>\]\]   *Read about it below*.
+> Every styling propery is defined as follows: \<***PropertyName***\>\[\<***PartID***\>\<***StateID***\>\]   *Read about it below*.
 
-The styling properties has an optional suffix of maximal two digit's to indicate the **PartID** and **StateID** of the object the property applies to.
-When there is no special **StateID** then it can ommited. A styling property without suffix will be applied to the **default state** of the **main part** of the object *(i.e. the background)*.
+The styling properties has a two-digit suffix to indicate the **PartID** and **StateID** of the object the property applies to.
+By styling property for the **default state** of the **main part** of the object you are allowed to omit the suffix  *(i.e. the `background` instead of `background00`)*.
 
 With this convention a very detailed styling can be applied to each part of the object depending on the state.
 
 !!! example  
-    For example the _gauge_ object uses `line_width` to set the minor ticks thickness and needle, `line_width60` for major ticks and `line_width10` for the thickness of the needle.
+    For example the _gauge_ object uses `line_width` to set the major ticks thickness and needle, `line_width60` for major ticks and `line_width10` for the thickness of the needle.
 
-### The PartIDs
+### The Part IDs
 
 All objects have at least a main part.
 Several objects are made up of additional parts which can each be styled separately.
@@ -24,7 +24,7 @@ To access the properties of the parts use a first digit suffix appended to the s
 
 The part indexes are:
 
-- 0 = main part of the object *(i.e. the background**0**)*
+- 0 = main part of the object *(i.e. the background**01**)*
 - 1 = the indicator or needle, highlighting the the current value
 - 2 = the knob which can be used the change the value
 - 3 = the background of the items/buttons
@@ -35,14 +35,13 @@ The part indexes are:
 - 8 = the scrollbar
 - 9 = other special part, not listed above
 
-When no special state is set you can also ommit the **main part** digit. 
+When no special state is used (a **StateID other then **0**) for the **main part** the whole suffix can be ommited. 
     
-
 ### The State IDs
 
 The state indexes:
 
-- 0 = default styling *(can be omitted)*
+- 0 = default styling
 - 1 = styling for toggled state
 - 2 = styling for pressed, not toggled state
 - 3 = styling for pressed and toggled state
@@ -54,15 +53,18 @@ The state indexes:
 
 !!! Example  
     A `toggle` `btn` can be made to show `text` `yellow` when toggled ON with `"text_color":"white","text_color01":"yellow"`
-    
+
+> For backwards compatibility with older version of *openHASP* the **StateID** is not mandatory. 
 
 ### Inheritance
 
-If objects are children of other objects (they have the [parentid][7] property set), property inheritance takes place. 
+If objects are children of other objects (they have the [parentid][7] property set), property inheritance takes place. Which means that some properties (typically that are related to text and opacity) can be inherited from the parent object's styles. 
 
-Some properties (typically that are related to text and opacity) can be inherited from the parent object's styles. Inheritance is applied only if the given property is not set in the initial jsonl of the child object (at first draw). In this case, if the property is inheritable, the property's value will be searched in the parents too until an object specifies a value for the property. The parents will use their own state to detemine the value. So for example if a button is pressed, and the text color comes from here, the pressed text color will be used. ([source][8]{target=_blank}) Inheritance takes place at run time too.     
+Inheritance is applied only if the given property is not set in the initial jsonl of the child object (at first draw). In this case, if the property is inheritable, the property's value will be searched in the parents too until an object specifies a value for the property. 
+The parents will use their own state to detemine the value. So for example if a button is pressed, and the text color comes from here, the pressed text color will be used. 
+([source][8]{target=_blank}) Inheritance takes place at run time too.     
 
-When a parent object is deleted, all children will be deleted too.
+~~When a parent object is deleted, all children will be deleted too.~~ 
 
 ## General
 
